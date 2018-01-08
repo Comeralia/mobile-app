@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="comeralia">
+    <ion-title>{{foodName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding>
+    <ion-item *ngFor="let restaurant of restaurants"
+      (click)="goToVenue(restaurant.id)">
+      <ion-avatar item-left>
+        <img *ngIf="restaurant.logo_image !== 'NULL'" [src]="'http://distritocuatro.mx/comeralia/imagenes_usr/'+restaurant.logo_image">
+        <img *ngIf="restaurant.logo_image === 'NULL'" src="assets/icon.png">
+      </ion-avatar>
+      <h2>{{ restaurant.name }}</h2>
+      <!-- <p>Las mejores alitas de San Luis Potosí</p> -->
+    </ion-item>
+  </ion-list>
+</ion-content>

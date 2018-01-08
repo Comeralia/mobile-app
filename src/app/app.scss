@@ -1,0 +1,107 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+    border-style: solid;
+    border-color: #FDB02A;
+}
+
+img#logo {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 100px;
+}
+ion-avatar{
+  img{
+    border-radius: 0px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+.promo-list{
+  display:block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  .promo-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-shadow: 2px 2px 7px #d4d4d4;
+    .promo-info{
+      display: flex;
+      flex-direction: row;
+      .promo-img{
+        width:33%;
+        img{
+          margin-bottom: -3px;
+        }
+      }
+      .promo-data{
+        width:67%;
+        padding:.7em;
+        h2{
+          margin-bottom: .3em;
+          font-size: 20px;
+        }
+        p{
+          margin:0 ;
+        }
+      }
+    }
+    .promo-data.no-image{
+      width:100%;
+      p{
+        font-size: 18px;
+        margin:0 0 .5em;
+      }
+      span{
+        background: #ffe6b9;
+        padding: .3em;
+        border-radius: 5px;
+        font-size: 12px;
+        box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+      }
+    }
+    .promo-restriction{
+        padding: .3em .5em;
+        background: #f3f3f3;
+        p{
+          font-size: 12px;
+          margin: 0;
+        }
+    }
+  }
+  .promo-card:nth-child(5n+1) .promo-info{
+    background: #FAF7BA;
+  }
+  .promo-card:nth-child(5n+2) .promo-info{
+    background: #F7FCE3;
+  }
+  .promo-card:nth-child(5n+3) .promo-info{
+    background: #F0FC94;
+  }
+  .promo-card:nth-child(5n+4) .promo-info{
+    background: #FFAD61;
+  }
+  .promo-card:nth-child(5n+5) .promo-info{
+    background: #BAD4BA;
+  }
+}

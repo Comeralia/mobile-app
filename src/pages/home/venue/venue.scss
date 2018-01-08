@@ -1,0 +1,84 @@
+page-venue{
+  .cover {
+    position:relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-image: url('../assets/food.png');
+    background-size: contain;
+    box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+      background: white;
+      padding: .5em;
+      width: 80px;
+      height: 80px;
+    }
+  }
+  .venue-cont{
+
+  }
+
+  .restaurant-list{
+    display:block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    .restaurant-card {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-shadow: 2px 2px 7px #d4d4d4;
+      .restaurant-info{
+        display: flex;
+        flex-direction: row;
+        .restaurant-img{
+          width:33%;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          img{
+            // position: absolute;
+            // max-width: 200%;
+            // top: 0;
+            // left: -50%;
+          }
+        }
+        .restaurant-data{
+          width:67%;
+          padding:.7em;
+          h2{
+            margin-bottom: .3em;
+            font-size: 18px;
+            color: #555;
+          }
+          p{
+            margin:0 0 .3em 0;
+            font-size: 14px;
+            color: #777;
+          }
+          span{
+            color: #4CAF50;
+            font-size: 13px;
+          }
+        }
+      }
+      .restaurant-restriction{
+          padding: .3em .5em;
+          background: #f3f3f3;
+          p{
+            font-size: 12px;
+            margin: 0;
+          }
+      }
+    }
+  }
+}

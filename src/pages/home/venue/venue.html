@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="comeralia">
+    <ion-title><img id="logo" src="assets/logo.png" alt=""></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="cover" *ngIf="restaurant">
+      <img *ngIf="restaurant.logo_image !== 'NULL'" [src]="'http://distritocuatro.mx/comeralia/imagenes_usr/'+restaurant.logo_image">
+      <img *ngIf="restaurant.logo_image === 'NULL'" src="assets/icon.png">
+        <h2>{{ restaurant.name }}</h2>
+    </div>
+    <div *ngIf="restaurant" class="venue-cont" padding>
+      <!-- <ion-item>
+        <ion-avatar item-left>
+          <img [src]="'http://distritocuatro.mx/comeralia/imagenes_usr/'+restaurant.logo">
+        </ion-avatar>
+        <h2>{{ restaurant.name }}</h2>
+      </ion-item> -->
+
+      <div *ngIf="establishments" class="restaurant-list">
+        <div class="restaurant-card"
+          *ngFor="let establishment of establishments"
+          (click)="goToSucursal(establishment.id)">
+          <div class="restaurant-info">
+            <div class="restaurant-img">
+              <img [src]="'http://distritocuatro.mx/comeralia/imagenes_usr/'+establishment.establishment_photos[0].image">
+            </div>
+            <div class="restaurant-data">
+              <h2>{{ establishment.name }}</h2>
+              <p>{{ establishment.street }} {{ establishment.number }} {{ establishment.neighborhood}}<br />
+              Tel. <a href="tel:{{establishment.phone}}">{{ establishment.phone }}</a></p>
+              <!-- <span class="tiempo">Abierto ahora</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</ion-content>

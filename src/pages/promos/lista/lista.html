@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="comeralia">
+    <ion-title><img id="logo" src="assets/logo.png" alt=""></ion-title>
+  </ion-navbar>
+  <ion-toolbar color="comeralia">
+    <ion-title>Promos del día</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="promo-list">
+    <div *ngFor="let offer of offers">
+      <div class="promo-card" *ngIf="offer.restaurant">
+        <div class="promo-info">
+          <div class="promo-img">
+            <img *ngIf="offer.restaurant.logo_image !== null" [src]="'http://distritocuatro.mx/comeralia/imagenes_usr/'+offer.restaurant.logo_image">
+            <img *ngIf="offer.restaurant.logo_image === null" src="assets/icon.png">
+          </div>
+          <div class="promo-data">
+            <h2>{{offer.restaurant.name}}</h2>
+            <p>{{offer.name}}</p>
+            <p>{{offer.description}}</p>
+          </div>
+        </div>
+        <div *ngIf="offer.restrictions" class="promo-restriction">
+          <p>* {{offer.restrictions}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

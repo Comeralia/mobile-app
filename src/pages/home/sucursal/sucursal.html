@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-navbar color="comeralia">
+    <ion-title><img id="logo" src="assets/logo.png" alt=""></ion-title>
+  </ion-navbar>
+  <ion-toolbar color="comeralia">
+    <ion-segment [(ngModel)]="segment" color="yellow-dark">
+      <ion-segment-button value="rest">
+        Restaurante
+      </ion-segment-button>
+      <ion-segment-button value="menu">
+        Menu
+      </ion-segment-button>
+      <ion-segment-button value="promo">
+        Promociones
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="segment">
+    <!-- RESTAURANT DATA -->
+    <div *ngSwitchCase="'rest'">
+      <div *ngIf="sucursal">
+        <ion-slides>
+          <ion-slide *ngFor="let photo of sucursal.establishment_photos">
+            <img [src]="'http://distritocuatro.mx/comeralia/imagenes_usr/'+photo.image" alt="">
+          </ion-slide>
+        </ion-slides>
+        <!-- <div class="cover">
+          <img src="assets/suc-1.jpg">
+        </div> -->
+        <div class="sucursal-info" padding>
+          <h3>{{sucursal.restaurant.name}}</h3>
+          <h2>{{sucursal.name}}</h2>
+          <div class="sucursal-item"><ion-icon name="locate"></ion-icon>{{sucursal.street}} {{sucursal.number}} {{sucursal.neighborhood}}</div>
+          <div class="sucursal-item"><ion-icon name="call"></ion-icon>{{sucursal.phone}} {{sucursal.phone2}}</div>
+          <!-- <div class="sucursal-item"><ion-icon name="time"></ion-icon>
+            <p *ngFor="let schedule of sucursal.shedules">{{schedule.init}} {{schedule.finish}}</p>
+          Lunes 11:00 a 22:00<br />
+          Martes 11:00 a 22:00<br />
+          Miercoles 11:00 a 22:00<br />
+          Jueves 11:00 a 22:00<br />
+          Viernes 11:00 a 22:00<br />
+          Sábado 11:00 a 22:00<br />
+          Domingo 11:00 a 22:00<br /></div> -->
+          <div class="sucursal-item"><ion-icon name="outlet"></ion-icon>{{sucursal.website}}</div>
+          <div class="sucursal-item"><ion-icon name="facebook"></ion-icon><a href="//fb.com/{{sucursal.facebook}}">Visita su Facebook</a></div>
+          <h3>Servicios</h3>
+          <div class="sucursal-item service" *ngFor="let service of sucursal.services">
+            <img src="assets/servs/{{service.id}}.png" alt="">
+            {{service.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU ITEMS -->
+    <div *ngSwitchCase="'menu'" padding>
+      <div *ngIf="sucursal">
+        <h2>Menú</h2>
+        <ion-list>
+          <ion-item-group *ngFor="let specialty of specialties">
+            <ion-item-divider color="comeralia">
+              {{specialty.name}}
+              <!-- <button color="comeralia" ion-button icon-only><ion-icon name="add"></ion-icon></button> -->
+            </ion-item-divider>
+            <ion-list-header>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-9>Platillo</ion-col>
+                  <ion-col col-3 justify-content-center>Precio</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-list-header>
+            <ion-item *ngFor="let dish of specialty.dishes">
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-9>{{dish.name}}</ion-col>
+                  <ion-col col-3>
+                    {{ dish.prices[0] | returnDefault }}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+        </ion-item-group>
+        </ion-list>
+      </div>
+    </div>
+
+    <!-- PROMOCIONES -->
+    <div *ngSwitchCase="'promo'" padding>
+      <div *ngIf="sucursal">
+        <div *ngIf="offers.length > 0">
+          <h2>Promociones</h2>
+          <div class="promo-list">
+            <div class="promo-card" *ngFor="let offer of offers">
+              <div class="promo-info">
+                <div class="promo-data no-image">
+                  <h2>{{offer.name}}</h2>
+                  <p>{{offer.description}}</p>
+                  <p>
+                    <span *ngFor="let day of offer['days']">{{ day | transformDay }}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="promo-restriction" *ngIf="offer.restrictions">
+                <p>* {{offer.restrictions}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="offers.length == 0">
+          <h2>Lo sentimos.</h2>
+          <h3>Por el momento no hay promociones disponibles :(</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

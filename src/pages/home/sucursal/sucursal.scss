@@ -1,0 +1,48 @@
+page-sucursal{
+  ion-slides{
+    height: 200px;
+  }
+  ion-item-divider{
+    position:relative;
+    .item-button{
+      position: absolute;
+      top: 0.3em;
+      right: .5em;
+
+      .icon:before{
+        font-size: 24px;
+      }
+    }
+  }
+  ion-list-header{
+    ion-label{
+      margin: auto !important;
+    }
+  }
+  ion-item{
+    .item-inner ion-label{
+      margin: auto !important;
+      font-size: 14px !important;
+    }
+  }
+  .sucursal-info{
+    .sucursal-item{
+      padding-left: 1.5em;
+      position: relative;
+      margin-bottom: .5em;
+      ion-icon,img{
+        position: absolute;
+        top:0;
+        left:0;
+      }
+      img{
+        width:100%;
+        max-width:18px;
+      }
+    }
+    .service{
+      display: inline-block;
+      width: 49%;
+    }
+  }
+}

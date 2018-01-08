@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar color="comeralia">
+    <ion-title><img id="logo" src="assets/logo.png" alt=""></ion-title>
+  </ion-navbar>
+  <ion-toolbar color="comeralia">
+    <ion-title>Cercano a mi</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Marker</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map"></div>
+</ion-content>

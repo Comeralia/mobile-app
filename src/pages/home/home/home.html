@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-navbar color="comeralia">
+    <ion-title><img id="logo" src="assets/logo.png" alt=""></ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentModal()">
+        <ion-icon name="locate"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar color="comeralia">
+    <ion-searchbar
+      [(ngModel)]="searchTerm" 
+      [formControl]="searchControl" 
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="onSearchInput()"
+      placeholder="Buscar"
+      (ionCancel)="onCancel($event)"
+      (click)="activateSearch()"></ion-searchbar>
+      <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+      </div>
+    <!-- <ion-icon class="filter" name="funnel"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngIf="searchIsOn && searchTerm.length > 0">
+    <ion-list-header>
+      Restaurantes
+    </ion-list-header>
+    <ion-item *ngFor="let restaurant of restaurantList" (click)="goToVenue(restaurant.id)">
+      {{restaurant.name}}
+    </ion-item>
+    <ion-item *ngIf="restaurantList === undefined || restaurantList.length === 0">La busqueda no coincide...</ion-item>
+    <ion-list-header>
+      Tipo de comida
+    </ion-list-header>
+    <ion-item *ngFor="let item of items" (click)="goToFoodType(item.id,item.title)">
+      {{item.title}}
+    </ion-item>
+    <ion-item *ngIf="items === undefined || items.length === 0">La busqueda no coincide...</ion-item>
+  </ion-list>
+  
+  <div class="cards" *ngIf="!searchIsOn || searchTerm.length === 0">  
+    <ion-card (click)="goToFoodType(1,'Alitas')">
+      <img src="assets/cats/alitas.jpg"/>
+      <ion-card-content>
+        <p>Alitas</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(2,'Cafeterías')">
+      <img src="assets/cats/cafeteria.jpg"/>
+      <ion-card-content>
+        <p>Cafeterías</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(3,'Comida Rápida')">
+      <img src="assets/cats/comida-rapida.jpg"/>
+      <ion-card-content>
+        <p>Comida Rápida</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(4,'Cortes')">
+      <img src="assets/cats/cortes.jpg"/>
+      <ion-card-content>
+        <p>Cortes</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(5,'Desayunos')">
+      <img src="assets/cats/desayunos.jpg"/>
+      <ion-card-content>
+        <p>Desayunos</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(6,'Hamburguesas')">
+      <img src="assets/cats/hamburguesas.jpg"/>
+      <ion-card-content>
+        <p>Hamburguesas</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(7,'Internacional')">
+      <img src="assets/cats/internacional.jpg"/>
+      <ion-card-content>
+        <p>Internacional</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(8,'Italiana')">
+      <img src="assets/cats/italiana.jpg"/>
+      <ion-card-content>
+        <p>Italiana</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(9,'Mariscos')">
+      <img src="assets/cats/mariscos.jpg"/>
+      <ion-card-content>
+        <p>Mariscos</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(10,'Mexicana')">
+      <img src="assets/cats/mexicana.jpg"/>
+      <ion-card-content>
+        <p>Mexicana</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(11,'Oriental')">
+      <img src="assets/cats/oriental.jpg"/>
+      <ion-card-content>
+        <p>Oriental</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(12,'Pizzas')">
+      <img src="assets/cats/pizzas.jpg"/>
+      <ion-card-content>
+        <p>Pizzas</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(13,'Saludable')">
+      <img src="assets/cats/saludable.jpg"/>
+      <ion-card-content>
+        <p>Saludable</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(14,'Tacos')">
+      <img src="assets/cats/tacos.jpg"/>
+      <ion-card-content>
+        <p>Tacos</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="goToFoodType(15,'Tortas')">
+      <img src="assets/cats/tortas.jpg"/>
+      <ion-card-content>
+        <p>Tortas</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
